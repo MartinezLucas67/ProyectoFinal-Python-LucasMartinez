@@ -20,7 +20,7 @@ from . import views
 
 urlpatterns = [
 ##Articulo
-    path('articulos/', views.ArticuloListView.as_view(), name="lista_articulos"),
+    path('articulos/', views.ArticuloListView.as_view(), name="articulo_list"),
     path('articulos/<int:pk>/', views.ArticuloDetailView.as_view(), name="ver_articulo"),
     path('crear-articulo/', views.ArticuloCreateView.as_view(), name="crear_articulo"),
     path('editar-articulo/<int:pk>/', views.ArticuloUpdateView.as_view(), name="editar_articulo"),

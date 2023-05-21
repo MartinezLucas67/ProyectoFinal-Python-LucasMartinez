@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Pro_web.views import inicio
+from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', inicio, name="inicio"),
+    path('create/', include("AppBlog.urls")),
+    path('registro/', include("AppPerfiles.urls")),
 ]

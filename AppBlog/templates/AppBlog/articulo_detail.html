@@ -1,0 +1,21 @@
+{% extends "AppBlog/base.html" %}
+
+{% block contenido %}
+
+<p>
+    <strong>Nombre:</strong> {{object.Autor}}
+</p>
+<p>
+  <strong>Titulo:</strong> {{object.Titulo}}
+</p>
+<p>
+  <strong>Sub titulo:</strong> {{object.sub_titulo}}
+</p>
+<p>
+  <strong>Fecha:</strong> {{object.fecha}}
+</p>
+
+<br>
+<a href="{% url 'articulo_list' %}">Volver lista</a>
+
+{% endblock contenido %}

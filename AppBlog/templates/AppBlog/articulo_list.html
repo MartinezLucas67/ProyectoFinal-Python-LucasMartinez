@@ -1,0 +1,43 @@
+{% extends "AppBlog/base.html" %}
+
+{% block contenido %}
+<section>
+  <div>
+    <h1>Articulos</h1>
+    <a href="{% url 'crear_articulo' %}">Añadir un articulo</a>
+    <br>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Autor</th>
+          <th>Titulo</th>
+          <td>Sub titulo</td>
+          <td>Fecha</td>
+          <td></td>
+        </tr>
+        {% for articulo in object.list %}
+        <tr>
+          <td>{{ articulo.autor }}</td>
+          <td>{{ articulo.titulo }}</td>
+          <td>{{ articulo.sub_titulo }}</td>
+          <td>{{ articulo.fecha}}</td>
+          <td>
+            <a href="{% url 'ver_articulo' articulo.id %}">Ver</a>
+          </td>
+          <td>
+            <a href="{% url 'editar_articulo' articulo.id %}">Editar</a>
+          </td>
+          <td>
+            <a href="{% url 'eliminar_articulo' articulo.id %}">
+              <i class="bi bi-trash"></i>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+{% endblock contenido %}
