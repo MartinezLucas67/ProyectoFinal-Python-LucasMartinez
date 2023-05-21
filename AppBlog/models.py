@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Articulo(models.Model):
-    autor = models.CharField(max_length=256)
+    autor = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     titulo = models.CharField(max_length=256)
     sub_titulo = models.CharField(max_length=256)
     fecha = models.DateField()

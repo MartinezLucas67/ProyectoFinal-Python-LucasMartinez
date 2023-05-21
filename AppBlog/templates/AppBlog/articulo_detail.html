@@ -3,16 +3,19 @@
 {% block contenido %}
 
 <p>
-    <strong>Nombre:</strong> {{object.Autor}}
-</p>
-<p>
-  <strong>Titulo:</strong> {{object.Titulo}}
+  <strong>Titulo:</strong> {{object.titulo}}
 </p>
 <p>
   <strong>Sub titulo:</strong> {{object.sub_titulo}}
 </p>
 <p>
-  <strong>Fecha:</strong> {{object.fecha}}
+  <section style="padding:rem 1rem;"> 
+  <strong>Contenido:</strong> {{object.contenido}}
+  </section>
+  {{object.fecha}}
+</p>
+<p>
+  <strong>Autor:</strong> {{object.autor}}
 </p>
 
 <br>

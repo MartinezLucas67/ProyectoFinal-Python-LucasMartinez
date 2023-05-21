@@ -6,6 +6,12 @@
     <h1>Articulos</h1>
     <a href="{% url 'crear_articulo' %}">Añadir un articulo</a>
     <br>
+    <form method="GET" action="{% url 'buscar_articulo' %}">
+      <input type="text" name="busqueda" placeholder="Buscar autor" value="{{ busqueda }}">
+      <input type="submit" value="Buscar">
+    </form>
+    </br>
+    
     <table class="table">
       <tbody>
         <tr>
@@ -15,7 +21,7 @@
           <td>Fecha</td>
           <td></td>
         </tr>
-        {% for articulo in object.list %}
+        {% for articulo in object_list %}
         <tr>
           <td>{{ articulo.autor }}</td>
           <td>{{ articulo.titulo }}</td>
@@ -24,6 +30,7 @@
           <td>
             <a href="{% url 'ver_articulo' articulo.id %}">Ver</a>
           </td>
+          {% if user == articulo.autor %}
           <td>
             <a href="{% url 'editar_articulo' articulo.id %}">Editar</a>
           </td>
@@ -32,12 +39,12 @@
               <i class="bi bi-trash"></i>
             </a>
           </td>
+          {% endif %}
         </tr>
         {% endfor %}
       </tbody>
     </table>
+  
   </div>
 </section>
-
-
 {% endblock contenido %}
