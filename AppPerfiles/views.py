@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy 
-from AppPerfiles.forms import UserRegisterForm, UserUpdateForm
+from AppPerfiles.forms import UserRegisterForm, UserUpdateForm, AvatarFormulario
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LogoutView
@@ -61,3 +61,21 @@ class MiPerfilUpdateView(LoginRequiredMixin, UpdateView):
 
    def get_object(self, queryset=None):
        return self.request.user
+
+def agregar_avatar(request):
+  if request.method == "POST":
+      formulario = AvatarFormulario(request.POST, request.FILES) # Aquí me llega toda la info del formulario html
+
+      if formulario.is_valid():
+          avatar = formulario.save()
+          avatar.user = request.user
+          avatar.save()
+          url_exitosa = reverse('inicio')
+          return redirect(url_exitosa)
+  else:  # GET
+      formulario = AvatarFormulario()
+  return render(
+      request=request,
+      template_name="AppPerfiles/avatar_form.html",
+      context={'form': formulario},
+  )
