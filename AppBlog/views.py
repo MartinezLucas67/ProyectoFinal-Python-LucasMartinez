@@ -37,20 +37,3 @@ class ArticuloDeleteView(DeleteView):
     model = Articulo
     success_url = reverse_lazy('articulo_list')
 
-class BuscarArticuloView(ListView):
-    model = Articulo
-    template_name = 'AppBlog/articulo_list.html'
-    context_object_name = 'Articulos'
-
-    def get_queryset(self):
-        busqueda = self.request.GET.get('busqueda')
-        if busqueda:
-            return Articulo.objects.filter(autor__icontains=busqueda)
-        else:
-            return Articulo.objects.none()
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['busqueda'] = self.request.GET.get('busqueda')
-        return context
-    

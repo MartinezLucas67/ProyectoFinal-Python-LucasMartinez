@@ -20,9 +20,9 @@ from . import views
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
-    path('registro/', views.registro, name='registro'),
+    path('signup/', views.registro, name='registro'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.CustomLogoutView.as_view(), name="logout"),
-    path('editar-mi-perfil/', views.MiPerfilUpdateView.as_view(), name="editar_perfil"),
+    path('profile/', views.MiPerfilUpdateView.as_view(), name="editar_perfil"),
     path('agregar-avatar/', views.agregar_avatar, name="agregar_avatar"),
 ]

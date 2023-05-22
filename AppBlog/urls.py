@@ -25,5 +25,5 @@ urlpatterns = [
     path('crear-articulo/', views.ArticuloCreateView.as_view(), name="crear_articulo"),
     path('editar-articulo/<int:pk>/', views.ArticuloUpdateView.as_view(), name="editar_articulo"),
     path('eliminar-articulo/<int:pk>/', views.ArticuloDeleteView.as_view(), name="eliminar_articulo"),
-    path('buscar/', views.BuscarArticuloView.as_view(), name='buscar_articulo'),
+    #path('buscar/', views.BuscarArticuloView.as_view(), name='buscar_articulo'),
 ]

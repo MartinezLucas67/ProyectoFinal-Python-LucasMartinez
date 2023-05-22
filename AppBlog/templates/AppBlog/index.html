@@ -1,7 +1,27 @@
 {% extends "AppBlog/base.html" %}
 
-{% block contenido%}
+{% block contenido %}
 <h1>Bienvenido {{user.first_name}} </h1>
-
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <td>Contenido</td>
+        </tr>
+        {% for articulo in object_list %}
+        <tr>
+          <td>{{ articulo.fecha}}</td>
+        </tr>
+        <tr>
+            <td>{{ articulo.contenido|truncatechars:50}}</td>
+            <td>
+              <a href="{% url 'ver_articulo' articulo.id %}">Ver mas</a>
+            </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
 {% endblock contenido %}

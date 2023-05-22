@@ -20,12 +20,15 @@ from Pro_web.views import inicio
 from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inicio, name="inicio"),
-    path('create/', include("AppBlog.urls")),
-    path('registro/', include("AppPerfiles.urls")),
+    path('pages/', include("AppBlog.urls")),
+    path('accounts/', include("AppPerfiles.urls")),
+    path('sobre_mi/', views.MiVista.as_view(), name='sobre_mi'),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
