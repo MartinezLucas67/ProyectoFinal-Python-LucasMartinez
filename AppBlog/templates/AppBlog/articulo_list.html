@@ -4,7 +4,8 @@
 <section>
   <div>
     <h1>Articulos</h1>
-    <a href="{% url 'crear_articulo' %}">Añadir un articulo</a>
+    <a href="{% url 'crear_articulo' %}">Lista de articulos</a>
+  {% if cantidad_articulos > 0 %}
     <table class="table">
       <tbody>
         <tr>
@@ -38,7 +39,9 @@
         {% endfor %}
       </tbody>
     </table>
-  
+  {% else %}
+    <p>No hay entradas aun.</p>
+  {% endif %}
   </div>
 </section>
 {% endblock contenido %}

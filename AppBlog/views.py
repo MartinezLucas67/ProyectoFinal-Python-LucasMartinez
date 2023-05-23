@@ -7,9 +7,15 @@ from django.utils.decorators import method_decorator
 
 from .models import Articulo
 
+
 class ArticuloListView(ListView):
     model = Articulo
     template_name = 'AppBlog/articulo_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cantidad_articulos'] = self.get_queryset().count()
+        return context
 
 @method_decorator(login_required, name='dispatch')
 class ArticuloCreateView(LoginRequiredMixin, CreateView):

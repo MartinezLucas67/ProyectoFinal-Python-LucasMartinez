@@ -26,7 +26,7 @@ urlpatterns = [
     path('', views.ArticuloIndexListView.as_view(), name="inicio"),
     path('pages/', include("AppBlog.urls")),
     path('accounts/', include("AppPerfiles.urls")),
-    path('sobre_mi/', views.MiVista.as_view(), name='sobre_mi'),
+    path('about/', views.MiVista.as_view(), name='sobre_mi'),
 
 ]
 
