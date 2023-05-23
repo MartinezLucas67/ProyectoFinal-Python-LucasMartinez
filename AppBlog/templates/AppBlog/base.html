@@ -25,7 +25,6 @@
             <div class="container">
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'articulo_list' %}">Añadir un articulo</a>
-                <a class="navbar-brand" href="">Cursos</a>
                 {% if user.is_authenticated %}
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,7 +54,7 @@
          
         
         <section style="padding:6rem 3rem;">  
-        {% block contenido%}
+        {% block contenido %}
         {% endblock contenido %}
         </section>
         

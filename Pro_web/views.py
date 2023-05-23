@@ -1,19 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import View, DetailView
+from django.views.generic import View, ListView
 from AppBlog.models import Articulo
 from django.urls import reverse_lazy 
 
+class ArticuloIndexListView(ListView):
+    model = Articulo
+    template_name = 'AppBlog/index.html'
+    context_object_name = 'articulos'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cantidad_articulos'] = self.get_queryset().count()
+        return context
 
-def inicio(request):
-    contexto = {}
-    http_response = render(
-        request=request,
-        template_name='AppBlog/index.html',
-        context=contexto,
-    )
-    return http_response
 
 class MiVista(View):
     def get(self, request):      

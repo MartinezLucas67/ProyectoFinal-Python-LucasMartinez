@@ -1,27 +1,31 @@
 {% extends "AppBlog/base.html" %}
 
 {% block contenido %}
-<h1>Bienvenido {{user.first_name}} </h1>
-    <table class="table">
-      <tbody>
-        <tr>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <td>Contenido</td>
-        </tr>
-        {% for articulo in object_list %}
-        <tr>
-          <td>{{ articulo.fecha}}</td>
-        </tr>
-        <tr>
-            <td>{{ articulo.contenido|truncatechars:50}}</td>
-            <td>
-              <a href="{% url 'ver_articulo' articulo.id %}">Ver mas</a>
-            </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+<section>
+  <div>
+    <h1>Bienvenido {{ user.first_name }}.</h1>
+    {% if cantidad_articulos > 0 %}
 
+      <table class="table">
+        <tbody>
+          {% for articulo in articulos|slice:":5" %}
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <p>
+              <h5>{{ articulo.titulo }}</h5>
+            </p>
+            <p>
+              <h5>{{ articulo.sub_titulo }}</h5>
+            </p>
+            <p
+              class="lead mb-5">{{ articulo.contenido|truncatechars:100 }} <a href="{% url 'ver_articulo' articulo.id %}">Ver más</a>
+            </p>
+          </div>
+            {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No hay entradas aun.</p>
+    {% endif %}
+  </div>
+</section>
 {% endblock contenido %}

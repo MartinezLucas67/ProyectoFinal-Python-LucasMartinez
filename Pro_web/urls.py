@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Pro_web.views import inicio
 from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,7 +23,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', inicio, name="inicio"),
+    path('', views.ArticuloIndexListView.as_view(), name="inicio"),
     path('pages/', include("AppBlog.urls")),
     path('accounts/', include("AppPerfiles.urls")),
     path('sobre_mi/', views.MiVista.as_view(), name='sobre_mi'),
