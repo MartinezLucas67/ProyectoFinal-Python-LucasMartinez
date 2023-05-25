@@ -4,7 +4,7 @@
 <section>
   <div>
     <h1>Articulos</h1>
-    <a href="{% url 'crear_articulo' %}">Lista de articulos</a>
+    <a href="{% url 'crear_articulo' %}">Añadir un articulos</a>
   {% if cantidad_articulos > 0 %}
     <table class="table">
       <tbody>
@@ -14,7 +14,8 @@
           <td>Sub titulo</td>
           <td>Fecha</td>
           <td>Contenido</td>
-        </tr>
+          <td>Imagen</td> <!-- Nueva columna para la imagen -->
+        </tr>  
         {% for articulo in object_list %}
         <tr>
           <td>{{ articulo.autor }}</td>
@@ -22,6 +23,13 @@
           <td>{{ articulo.sub_titulo }}</td>
           <td>{{ articulo.fecha}}</td>
           <td>{{ articulo.contenido|truncatechars:50}}</td>
+          <td>
+            {% if articulo.imagen %}
+            <img src="{{ articulo.imagen.url }}" alt="Imagen del articulo" style="max-height: 100px;">
+            {% else %}
+            No hay imagen
+            {% endif %}
+          </td>
           <td>
             <a href="{% url 'ver_articulo' articulo.id %}">Ver mas</a>
           </td>
@@ -40,7 +48,7 @@
       </tbody>
     </table>
   {% else %}
-    <p>No hay entradas aun.</p>
+    <p>No hay entradas aún.</p>
   {% endif %}
   </div>
 </section>

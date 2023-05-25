@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.views.generic import View, ListView
 from AppBlog.models import Articulo
 from django.urls import reverse_lazy 
-
 class ArticuloIndexListView(ListView):
     model = Articulo
     template_name = 'AppBlog/index.html'

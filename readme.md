@@ -27,5 +27,6 @@ python manage.py createsuperuser
 + contra: admin1234
 
 
-# Dato no menor
+# Comentraios
++ El txt requirementents tiene cosas del CKEditor que no lo pude agregar al codigo. No me funciono y no pude resolverlo.
 + 

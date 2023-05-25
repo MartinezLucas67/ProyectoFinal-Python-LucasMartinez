@@ -4,6 +4,7 @@
 <section>
   <div>
     <h1>Bienvenido {{ user.first_name }}.</h1>
+    <img src="{{ user.avatar.imagen.url }}" style="max-height: 500px;" />
     {% if cantidad_articulos > 0 %}
 
       <table class="table">
@@ -11,13 +12,20 @@
           {% for articulo in articulos|slice:":5" %}
           <div class="col-lg-6 order-lg-1 my-auto showcase-text">
             <p>
+              {% if articulo.imagen %}
+              <img src="{{ articulo.imagen.url }}" alt="Imagen del articulo" style="max-height: 500px;">
+              {% else %}
+              No hay imagen
+              {% endif %}
+            </p>
+            <p>
               <h5>{{ articulo.titulo }}</h5>
             </p>
             <p>
               <h5>{{ articulo.sub_titulo }}</h5>
             </p>
             <p
-              class="lead mb-5">{{ articulo.contenido|truncatechars:100 }} <a href="{% url 'ver_articulo' articulo.id %}">Ver más</a>
+              class="lead mb-5">{{ articulo.contenido|truncatechars:100 }} <a href="{% url 'ver_articulo' articulo.id %}">Ver mas</a>
             </p>
           </div>
             {% endfor %}

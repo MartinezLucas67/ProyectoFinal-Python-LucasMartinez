@@ -79,3 +79,15 @@ def agregar_avatar(request):
       template_name="AppPerfiles/avatar_form.html",
       context={'form': formulario},
   )
+def eliminar_avatar(request):
+    if request.method == "POST":
+        profile = request.user
+        profile.avatar.delete()
+        profile.save()
+        url_exitosa = reverse('inicio')
+        return redirect(url_exitosa)
+    
+    return render(
+        request=request,
+        template_name="AppPerfiles/avatar_confirm_delete.html",
+    )
