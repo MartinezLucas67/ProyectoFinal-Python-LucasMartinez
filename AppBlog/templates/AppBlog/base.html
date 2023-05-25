@@ -25,6 +25,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'articulo_list' %}">Lista de articulos</a>
+                <a class="navbar-brand" href="{% url 'historia_del_cafe' %}">Historia del cafe</a>
                 {% if user.is_authenticated %}
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

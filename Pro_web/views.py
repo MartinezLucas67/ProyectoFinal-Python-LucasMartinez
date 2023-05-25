@@ -19,3 +19,9 @@ class MiVista(View):
         mi_texto = "¡Hola, mundo!"
         context = {'texto': mi_texto}
         return render(request, 'AppBlog/acerca_de_mi.html', context)
+    
+class Historia_del_cafe(View):
+    def get(self, request):      
+        mi_texto = "¡Hola, mundo!"
+        context = {'texto': mi_texto}
+        return render(request, 'AppBlog/historia_del_cafe.html', context)

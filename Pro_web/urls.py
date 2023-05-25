@@ -27,7 +27,7 @@ urlpatterns = [
     path('pages/', include("AppBlog.urls")),
     path('accounts/', include("AppPerfiles.urls")),
     path('about/', views.MiVista.as_view(), name='sobre_mi'),
+    path('about-cafe/', views.Historia_del_cafe.as_view(), name='historia_del_cafe'),
 
 ]
-
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
