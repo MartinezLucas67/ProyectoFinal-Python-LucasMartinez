@@ -2,12 +2,12 @@
 
 {% block contenido %}
   <h3>Eliminar Avatar</h3>
-  {% if form.instance.avatar %}
+  {% if avatar %}
     <form method="post" action="{% url 'eliminar_avatar' %}">
       {% csrf_token %}
       <input type="submit" value="Eliminar avatar"/>
     </form>
   {% else %}
-    <p>No se ha ingresado ningun avatar aun.</p>
+    <p>No se ha ingresado ningún avatar aún.</p>
   {% endif %}
 {% endblock contenido %}

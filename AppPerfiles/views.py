@@ -6,8 +6,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import UpdateView
-
+from django.views.generic import UpdateView, View
+from .models import Avatar
 
 def registro(request):
     if request.method == 'POST':
@@ -79,15 +79,20 @@ def agregar_avatar(request):
       template_name="AppPerfiles/avatar_form.html",
       context={'form': formulario},
   )
-def eliminar_avatar(request):
-    if request.method == "POST":
-        profile = request.user
-        profile.avatar.delete()
-        profile.save()
+
+class EliminarAvatarView(View):
+    def get(self, request):
+        avatar = Avatar.objects.filter(user=request.user).first()
+        context = {
+            'avatar': avatar
+        }
+        return render(request, 'AppPerfiles/avatar_confirm_delete.html', context)
+
+    def post(self, request):
+        avatar = Avatar.objects.filter(user=request.user).first()
+        if avatar:
+            avatar.delete()
         url_exitosa = reverse('inicio')
         return redirect(url_exitosa)
+
     
-    return render(
-        request=request,
-        template_name="AppPerfiles/avatar_confirm_delete.html",
-    )
