@@ -24,6 +24,8 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.CustomLogoutView.as_view(), name="logout"),
     path('profile/', views.MiPerfilUpdateView.as_view(), name="editar_perfil"),
-    path('agregar-avatar/', views.agregar_avatar, name="agregar_avatar"),
+    path('agregar-avatar/', views.AgregarAvatarView.as_view(), name="agregar_avatar"),
     path('eliminar-avatar/', views.EliminarAvatarView.as_view(), name="eliminar_avatar"),
+    path('avatar/', views.MiAvatar, name="ver_avatar"),
+
 ]

@@ -1,10 +1,15 @@
 {% extends 'AppBlog/base.html' %}
-
+{% load static %}
 {% block contenido %}
 <body>
     <h1>Acerca de mi</h1>
-    <td> {{ texto }} </td>
-</body>
 
+    <div class="col-lg-6 my-auto showcase-text">   
+    <td class="lead mb-0"> {{ texto }} </td>
+    </div>
+    <section style="padding:2rem 0rem;">
+    <img src="{% static 'assets/img/IMG_20230217_184636.jpg' %}" alt="IMG_20230217_184636.jpg" style="max-height: 300px;" />
+      
+</body>
 
 {% endblock contenido %}

@@ -1,0 +1,12 @@
+{% extends "AppBlog/base.html" %}
+
+{% block contenido %}
+<h1>Tu avatar {{user.first_name}}.</h1>
+
+
+<p>
+<a href="{% url 'agregar_avatar' %}" class="btn btn-primary btn-sm active">Agregar avatar</a>
+<a href="{% url 'eliminar_avatar' %}" class="btn btn-secondary btn-sm active">Eliminar avatar</a>
+</p>
+<img src="{{ user.avatar.imagen.url }}" style="max-height: 500px;" />
+{% endblock contenido %}

@@ -62,23 +62,42 @@ class MiPerfilUpdateView(LoginRequiredMixin, UpdateView):
    def get_object(self, queryset=None):
        return self.request.user
 
-def agregar_avatar(request):
-  if request.method == "POST":
-      formulario = AvatarFormulario(request.POST, request.FILES) 
 
-      if formulario.is_valid():
-          avatar = formulario.save()
-          avatar.user = request.user
-          avatar.save()
-          url_exitosa = reverse('inicio')
-          return redirect(url_exitosa)
-  else:  
-      formulario = AvatarFormulario()
-  return render(
-      request=request,
-      template_name="AppPerfiles/avatar_form.html",
-      context={'form': formulario},
-  )
+class AgregarAvatarView(View):
+    def get(self, request):
+        avatar = Avatar.objects.filter(user=request.user).first()
+        formulario = AvatarFormulario()
+        context = {
+            'form': formulario,
+            'avatar': avatar,
+        }
+        return render(
+            request=request,
+            template_name="AppPerfiles/avatar_form.html",
+            context=context,
+        )
+
+    def post(self, request):
+        avatar = Avatar.objects.filter(user=request.user).first()
+        formulario = AvatarFormulario(request.POST, request.FILES)
+        if formulario.is_valid():
+            if avatar:
+                avatar.delete()
+            avatar = formulario.save(commit=False)
+            avatar.user = request.user
+            avatar.save()
+            url_exitosa = reverse('ver_avatar')
+            return redirect(url_exitosa)
+        else:
+            context = {
+                'form': formulario,
+                'avat': avatar,
+            }
+            return render(
+                request=request,
+                template_name="AppPerfiles/avatar_form.html",
+                context=context,
+            )
 
 class EliminarAvatarView(View):
     def get(self, request):
@@ -95,4 +114,11 @@ class EliminarAvatarView(View):
         url_exitosa = reverse('inicio')
         return redirect(url_exitosa)
 
-    
+def MiAvatar(request):
+    contexto = {}
+    http_response = render(
+        request=request,
+        template_name='AppBlog/avatar.html',
+        context=contexto,
+    )
+    return http_response

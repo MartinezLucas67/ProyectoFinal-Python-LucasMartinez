@@ -20,11 +20,12 @@ class ArticuloListView(ListView):
 @method_decorator(login_required, name='dispatch')
 class ArticuloCreateView(LoginRequiredMixin, CreateView):
     model = Articulo
-    fields = ('autor', 'titulo', 'sub_titulo', 'fecha', 'contenido')
+    fields = ('autor', 'titulo', 'sub_titulo', 'fecha', 'contenido', 'imagen')
     success_url = reverse_lazy('articulo_list')
 
     def form_valid(self, form):
         form.instance.autor = self.request.user
+        form.instance.imagen = self.request.FILES.get('imagen')
         return super().form_valid(form)
 
 

@@ -8,7 +8,7 @@ class Articulo(models.Model):
     sub_titulo = models.CharField(max_length=256)
     fecha = models.DateField()
     contenido = models.TextField()
-    imagen = models.ImageField(upload_to='articulo_imagenes', null=True, blank=True)
+    imagen = models.ImageField(upload_to='articulo_imagenes/', null=True, blank=True)
 
     def __str__(self):
         return f"{self.autor} {self.titulo}"

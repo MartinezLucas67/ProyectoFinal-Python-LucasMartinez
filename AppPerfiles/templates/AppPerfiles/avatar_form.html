@@ -1,10 +1,16 @@
 {% extends "AppBlog/base.html" %}
 
 {% block contenido %}
-<h3>Sube tu Avatar</h3>
-<form method="post" enctype="multipart/form-data">
- {% csrf_token %}
- {{ form.as_p }}
- <input type="submit" value="Subir imagen"/>
-</form>
+  <h2>Sube tu Avatar</h2>
+  {% if avatar %}
+    <img src="{{ avatar.imagen.url }}" style="max-height: 350px;" />
+    <h5>Para subir un nuevo avatar debes eliminar el actual.</h5>
+    <a href="{% url 'eliminar_avatar' %}">Eliminar aqui</a>
+  {% else %}
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Subir imagen"/>
+    </form>
+  {% endif %}
 {% endblock contenido %}

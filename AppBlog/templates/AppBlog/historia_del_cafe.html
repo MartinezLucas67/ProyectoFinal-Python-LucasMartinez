@@ -1,9 +1,14 @@
 {% extends 'AppBlog/base.html' %}
-
+{% load static %}
 {% block contenido %}
 <body>
     <h1>Historia del cafe</h1>
-    <td> {{ texto }} </td>
+    <div class="col-lg-6 my-auto showcase-text">   
+    <td class="lead mb-0"> {{ texto }} </td>
+    </div>
+    <section style="padding:2rem 0rem;">
+    <img src="{% static 'assets/img/fotos-e-imágenes-de-granos-de-café-y-taza-coffee-photos-1.jpg' %}" alt="fotos-e-imágenes-de-granos-de-café-y-taza-coffee-photos-1.jpg" style="max-height: 500px;" />
+      
 </body>
 
 
