@@ -25,7 +25,9 @@
             <div class="container">
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'articulo_list' %}">Lista de articulos</a>
+                {% if user.is_authenticated %}
                 <a class="navbar-brand" href="{% url 'ver_avatar' %}">Tu avatar</a>
+                {% endif %}
                 <a class="navbar-brand" href="{% url 'historia_del_cafe' %}">Historia del cafe</a>
                 {% if user.is_authenticated %}
                 <div class="dropdown">
