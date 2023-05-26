@@ -13,4 +13,7 @@
   {% endif %}
   </p>
 <img src="{{ user.avatar.imagen.url }}" style="max-height: 400px;" />
+<p>
+  <a href="{% url 'ver_avatar' %}">Volver</a>
+</p>
 {% endblock contenido %}

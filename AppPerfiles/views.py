@@ -91,7 +91,7 @@ class AgregarAvatarView(View):
         else:
             context = {
                 'form': formulario,
-                'avat': avatar,
+                'avatar': avatar,
             }
             return render(
                 request=request,
@@ -111,7 +111,7 @@ class EliminarAvatarView(View):
         avatar = Avatar.objects.filter(user=request.user).first()
         if avatar:
             avatar.delete()
-        url_exitosa = reverse('inicio')
+        url_exitosa = reverse('ver_avatar')
         return redirect(url_exitosa)
 
 def MiAvatar(request):

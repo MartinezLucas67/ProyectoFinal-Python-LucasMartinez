@@ -6,6 +6,9 @@
     <img src="{{ avatar.imagen.url }}" style="max-height: 350px;" />
     <h5>Para subir un nuevo avatar debes eliminar el actual.</h5>
     <a href="{% url 'eliminar_avatar' %}">Eliminar aqui</a>
+    <p>
+      <a href="{% url 'ver_avatar' %}">Volver</a>
+    </p>
   {% else %}
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
