@@ -20,7 +20,7 @@ class ArticuloListView(ListView):
 @method_decorator(login_required, name='dispatch')
 class ArticuloCreateView(LoginRequiredMixin, CreateView):
     model = Articulo
-    fields = ('autor', 'titulo', 'sub_titulo', 'fecha', 'contenido', 'imagen')
+    fields = ('titulo', 'sub_titulo', 'fecha', 'contenido', 'imagen')
     success_url = reverse_lazy('articulo_list')
 
     def form_valid(self, form):

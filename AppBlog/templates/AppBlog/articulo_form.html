@@ -5,10 +5,10 @@
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form.as_p }}
-  <input type="submit" value="Guardar" />
+  <input type="submit" value="Guardar" onclick="this.disabled=true; this.value='Guardando...'; this.form.submit();" />
 </form>
 
 <br>
-<a href="{% url 'articulo_list' %}">Volver lista</a>
+<a href="{% url 'articulo_list' %}">Volver a la lista</a>
 
 {% endblock contenido %}
