@@ -33,6 +33,6 @@ python manage.py createsuperuser
 
 
 # Video Demostración
-+ 
++ https://youtu.be/RQjLYNSPb3g
 # Comentraios
 + El txt requirementents tiene cosas del CKEditor que no lo pude agregar al codigo. No me funciono y no pude resolverlo.
